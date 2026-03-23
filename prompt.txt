@@ -1,0 +1,457 @@
+Buatkan kode HTML lengkap dalam satu file (Single File HTML) untuk website Portfolio Profesional saya. Gunakan Tailwind CSS via CDN agar desainnya modern, elegant, bersih, dan responsif
+
+Identitas Saya:
+
+Nama: Alika Rizki Maulida
+
+Status: Mahasiswa teknik rekayasa perangkat lunak
+
+Keahlian: IoT Development, fullstack deploment, Problem Solving atau AI Tools
+
+Struktur Website yang Saya Inginkan:
+
+Navbar: Sticky navbar dengan Glassmorphism effect, berisi link ke Home, About, Projects, dan Contact.
+
+Hero Section: Foto profil (gunakan placeholder dulu), nama besar, headline yang menarik, dan tombol 'Download CV' serta 'Hubungi Saya'.
+
+About Me:buatkan section About Me yang inspiratif dan profesional dengan narasi kira-kira seperti ini (kamu boleh tambah atau edit kalimat aku ini):
+
+'Halo! Saya Alika Rizki Maulida, seorang mahasiswi teknik rekayasa pernagkat lunak yang memiliki ketertarikan mendalam pada dunia Internet of Things (IoT) dan Web Development. Bagi saya, teknologi bukan sekadar baris kode, melainkan solusi nyata untuk memecahkan masalah sehari-hari.
+
+Perjalanan saya di dunia teknologi dimulai dari rasa penasaran bagaimana perangkat keras dan perangkat lunak bisa berkomunikasi secara harmonis. Hal ini mendorong saya untuk fokus mengembangkan berbagai proyek inovatif, salah satunya adalah underwater drone dilengkapi sensor kualitas air, sebuah sistem yang dirancang untuk memantau seberapa tingkat nya kualiatas air, seperti kekruhan, suhu, dan kepadatan zat terlarut pada air
+
+Saya adalah pribadi yang adaptif, senang mempelajari hal-hal baru (seperti eksplorasi AI tools hari ini!), dan percaya bahwa kolaborasi adalah kunci untuk menciptakan inovasi yang berdampak luas. Di waktu luang, saya aktif mengeksplorasi tren teknologi terbaru dan terus mengasah kemampuan problem-solving saya.'"
+
+section about me
+Gunakan Layout 2 Kolom: "Di layar laptop (desktop), buat bagian About Me ini menjadi 2 kolom: sisi kiri berisi foto/ilustrasi, dan sisi kanan berisi teks narasi panjang di atas."
+
+Tambahkan Status/Stats: "Sertakan juga baris kecil di bawah teks tersebut yang menunjukkan status saya, seperti: 'Location: bogor', 'Interest: Robotics & AI', 'Available for: Collaboration'."
+
+Featured Project: Bagian khusus untuk proyek alat yang saya kerjakan kemarin: drone under water dilengkapi sensor kualitas air. fungsi alat ini untuk mengetahui tingkat kualitas air, teknologi yg dipakai esp32, 3 sensor air yaitu turbidity sensor, tds sensor, suhu sensor, dinamo, motor driver, baterai dan komponen lainnya, dan masalah yang diselasaikan alat tersebut itu buat seseorang mengetahui seberapa berkulitas nya air, seperti air sungai. dan untuk seseorang mengetahui itu saya membuat dashboard monitoring untuk memantau data sensor secara realtime.
+
+Portfolio Gallery: Grid 6 kolom untuk menampilkan proyek-proyek kecil lainnya.
+
+Contact Section: Form kontak sederhana dan link ke LinkedIn/GitHub/Instagram.
+
+Footer: Copyright Alika Rizki Maulida 2026.
+
+Ketentuan Teknis:
+
+Gunakan palet warna midnight purple dan black buat supaya terlihat elegant
+
+Gunakan font Inter atau Poppins dari Google Fonts.
+
+Gunakan animasi CSS yang halus:
+Efek Scroll Reveal (Fade In Up) pada setiap section.
+Efek Hover (Scale & Shadow) pada kartu portfolio dan tombol.
+Efek Typing pada headline di Hero Section.
+Efek Bouncing pada ikon 'scroll down'.
+Pastikan semua animasi memiliki durasi yang cepat tapi halus (misal: transition-duration: 300ms)."
+
+Pastikan kode rapi dan mudah saya edit bagian teksnya nanti. Berikan komentar di setiap section kodenya.
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alika Rizki Maulida | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #05020a; /* Darker than black purple */
+            color: #e2e8f0;
+        }
+
+        /* Custom Colors & Backgrounds */
+        .bg-midnight { background-color: #0a0514; }
+        .text-accent { color: #893dd1; } /* Purple-500 */
+        .bg-accent { background-color: #a855f7; }
+        .glass {
+            background: rgba(15, 7, 30, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Typing Effect Animation */
+        .typing-text::after {
+            content: "|";
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating Animation for Hero */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0514; }
+        ::-webkit-scrollbar-thumb { background: #6b21a8; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-bold text-xl tracking-wider text-accent">
+                    ALIKA<span class="text-white">RIZKI.</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-accent transition-duration-300">Home</a>
+                        <a href="#about" class="hover:text-accent transition-duration-300">About</a>
+                        <a href="#projects" class="hover:text-accent transition-duration-300">Projects</a>
+                        <a href="#contact" class="hover:text-accent transition-duration-300">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-4 relative overflow-hidden">
+        <!-- Background Glow -->
+        <div class="absolute top-1/4 -left-20 w-72 h-72 bg-purple-900/30 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-1/4 -right-20 w-72 h-72 bg-indigo-900/20 rounded-full blur-[120px]"></div>
+
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 z-10">
+            <div class="flex-1 text-center md:text-left">
+                <h2 class="text-purple-400 font-medium tracking-widest mb-2">WELCOME TO MY WORLD</h2>
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 leading-tight">
+                    I'm <span class="text-accent">Alika Rizki Maulida</span>
+                </h1>
+                <h3 class="text-xl md:text-2xl font-light mb-8 text-gray-400">
+                    A <span id="typing" class="typing-text text-white font-semibold"></span>
+                </h3>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <a href="#" class="px-8 py-3 bg-accent hover:bg-purple-600 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-500/25">
+                        Download CV <i class="fas fa-download ml-2"></i>
+                    </a>
+                    <a href="#contact" class="px-8 py-3 border border-purple-500 hover:bg-purple-500/10 rounded-full font-medium transition-all duration-300">
+                        Hubungi Saya
+                    </a>
+                </div>
+            </div>
+            <div class="flex-1 flex justify-center animate-float">
+                <div class="relative w-64 h-64 md:w-80 md:h-80">
+                    <!-- Placeholder Foto -->
+                    <div class="w-full h-full rounded-2xl overflow-hidden border-2 border-purple-500/50 shadow-2xl shadow-purple-500/20">
+                        <img src="https://via.placeholder.com/500x500/1a0b2e/a855f7?text=Alika+Rizki" alt="Alika Rizki Maulida" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Down Icon -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about"><i class="fas fa-chevron-down text-purple-500 text-2xl"></i></a>
+        </div>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about" class="py-20 px-4 reveal">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Sisi Kiri: Ilustrasi/Foto -->
+                <div class="flex-1">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                        <div class="relative bg-midnight rounded-lg p-2">
+                             <img src="https://via.placeholder.com/600x400/0a0514/ffffff?text=IoT+Exploration" alt="Illustration" class="rounded-md w-full">
+                        </div>
+                    </div>
+                </div>
+                <!-- Sisi Kanan: Teks Narasi -->
+                <div class="flex-1">
+                    <h2 class="text-3xl font-bold mb-6 flex items-center">
+                        <span class="w-12 h-1 bg-accent mr-4"></span> About Me
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Halo! Saya <span class="text-white font-semibold">Alika Rizki Maulida</span>, seorang mahasiswi teknik rekayasa perangkat lunak yang memiliki ketertarikan mendalam pada dunia <span class="text-accent">Internet of Things (IoT)</span> dan <span class="text-accent">Web Development</span>. Bagi saya, teknologi bukan sekadar baris kode, melainkan solusi nyata untuk memecahkan masalah sehari-hari.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed mb-8">
+                        Perjalanan saya dimulai dari rasa penasaran bagaimana perangkat keras dan perangkat lunak bisa berkomunikasi secara harmonis. Saya adalah pribadi yang adaptif, senang mempelajari hal-hal baru (seperti eksplorasi <span class="italic">AI tools</span>!), dan percaya bahwa kolaborasi adalah kunci untuk menciptakan inovasi yang berdampak luas.
+                    </p>
+                    
+                    <!-- Stats / Status Line -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-purple-900/50 pt-6">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-map-marker-alt text-accent"></i>
+                            <span class="text-sm text-gray-400">Bogor, Indonesia</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-robot text-accent"></i>
+                            <span class="text-sm text-gray-400">Robotics & AI</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-briefcase text-accent"></i>
+                            <span class="text-sm text-gray-400">Collaboration Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PROJECT SECTION -->
+    <section id="featured" class="py-20 px-4 bg-midnight/50 reveal">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-center text-3xl font-bold mb-16">Featured <span class="text-accent">Project</span></h2>
+            
+            <div class="bg-midnight border border-purple-900/30 rounded-3xl overflow-hidden flex flex-col lg:flex-row shadow-2xl">
+                <div class="flex-1 p-8 md:p-12">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="px-3 py-1 bg-purple-500/20 text-accent text-xs rounded-full uppercase font-bold tracking-widest">Most Innovative</span>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Underwater Drone - Sensor Kualitas Air</h3>
+                    <p class="text-gray-400 mb-6 italic">"Sistem cerdas pemantau ekosistem sungai secara real-time."</p>
+                    <p class="text-gray-300 mb-6">
+                        Drone bawah air ini dirancang untuk mendeteksi kualitas air secara otomatis. Mengatasi masalah sulitnya pengambilan sampel air sungai secara manual dengan menyediakan dashboard monitoring real-time bagi pengguna.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-microchip text-accent"></i>
+                            <span class="text-sm">ESP32 & Motor Driver</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-tint text-accent"></i>
+                            <span class="text-sm">Turbidity & TDS Sensor</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-thermometer-half text-accent"></i>
+                            <span class="text-sm">Suhu Sensor & Dinamo</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-chart-line text-accent"></i>
+                            <span class="text-sm">Real-time Dashboard</span>
+                        </div>
+                    </div>
+                    <button class="px-6 py-2 bg-white text-black font-bold rounded-lg hover:bg-accent hover:text-white transition-all duration-300">
+                        Lihat Dokumentasi
+                    </button>
+                </div>
+                <div class="flex-1 bg-purple-900/10 flex items-center justify-center p-8">
+                    <img src="https://via.placeholder.com/500x350/1a0b2e/a855f7?text=Underwater+Drone+System" alt="Drone Project" class="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO GALLERY -->
+    <section id="projects" class="py-20 px-4 reveal">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold">Other <span class="text-accent">Creations</span></h2>
+                <p class="text-gray-400 mt-2">Kumpulan proyek kecil dan eksplorasi teknologi lainnya.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div class="group bg-midnight p-6 rounded-2xl border border-purple-900/20 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-purple-900/10 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                        <i class="fas fa-code text-5xl text-purple-700 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Fullstack Deployment</h4>
+                    <p class="text-sm text-gray-400">Implementasi CI/CD untuk aplikasi web modern menggunakan Docker dan Nginx.</p>
+                </div>
+                <!-- Project 2 -->
+                <div class="group bg-midnight p-6 rounded-2xl border border-purple-900/20 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-purple-900/10 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                        <i class="fas fa-brain text-5xl text-purple-700 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">AI Problem Solver</h4>
+                    <p class="text-sm text-gray-400">Bot asisten yang mengintegrasikan LLM API untuk otomasi tugas administratif.</p>
+                </div>
+                <!-- Project 3 -->
+                <div class="group bg-midnight p-6 rounded-2xl border border-purple-900/20 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-purple-900/10 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                        <i class="fas fa-bolt text-5xl text-purple-700 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Smart Home Node</h4>
+                    <p class="text-sm text-gray-400">Sistem kontrol lampu dan suhu berbasis MQTT menggunakan ESP8266.</p>
+                </div>
+                <!-- Project 4 -->
+                <div class="group bg-midnight p-6 rounded-2xl border border-purple-900/20 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-purple-900/10 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                        <i class="fas fa-database text-5xl text-purple-700 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Data Monitoring App</h4>
+                    <p class="text-sm text-gray-400">Dashboard berbasis React untuk visualisasi data sensor secara real-time.</p>
+                </div>
+                <!-- Project 5 -->
+                <div class="group bg-midnight p-6 rounded-2xl border border-purple-900/20 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-purple-900/10 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                        <i class="fas fa-network-wired text-5xl text-purple-700 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Network Security Script</h4>
+                    <p class="text-sm text-gray-400">Script Python sederhana untuk mendeteksi intrusi pada jaringan lokal.</p>
+                </div>
+                <!-- Project 6 -->
+                <div class="group bg-midnight p-6 rounded-2xl border border-purple-900/20 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-purple-900/10 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                        <i class="fas fa-mobile-alt text-5xl text-purple-700 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Inventory Mobile App</h4>
+                    <p class="text-sm text-gray-400">Aplikasi manajemen stok barang yang terhubung dengan database cloud.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <!-- START: Contact Section -->
+    <section id="contact" class="py-24 relative">
+        <div class="glow top-0 right-0"></div>
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+            <div class="reveal">
+                <h2 class="text-4xl font-bold mb-6">Let's Work <br> Together!</h2>
+                <p class="text-gray-400 mb-8">Saya terbuka untuk kolaborasi proyek IoT maupun Web Development. Jangan ragu untuk menghubungi saya!</p>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 text-gray-300">
+                        <div class="w-12 h-12 glass rounded-full flex items-center justify-center text-purple-400">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <span>alika.rizki@email.com</span>
+                    </div>
+                    <div class="flex items-center gap-4 text-gray-300">
+                        <div class="w-12 h-12 glass rounded-full flex items-center justify-center text-purple-400">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <a href="#" class="hover:text-purple-400 transition">Alika Rizki Maulida</a>
+                    </div>
+                    <div class="flex items-center gap-4 text-gray-300">
+                        <div class="w-12 h-12 glass rounded-full flex items-center justify-center text-purple-400">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <a href="#" class="hover:text-purple-400 transition">@alikarizki_</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal">
+                <form class="glass p-8 rounded-3xl space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Nama Lengkap</label>
+                        <input type="text" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-500 transition" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Email</label>
+                        <input type="email" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-500 transition" placeholder="john@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Pesan</label>
+                        <textarea rows="4" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-500 transition" placeholder="Halo Alika..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-purple-600 hover:bg-purple-700 rounded-lg font-bold transition">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- END: Contact Section -->
+
+    <!-- FOOTER -->
+    <footer class="py-8 border-t border-purple-900/30 text-center">
+        <p class="text-gray-500 text-sm">
+            &copy; 2026 <span class="text-accent">Alika Rizki Maulida</span>. All rights reserved.
+        </p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Typing Effect
+        const words = ["Software Engineering Student", "IoT Developer", "Tech Explorer", "Problem Solver"];
+        let i = 0;
+        let j = 0;
+        let currentWord = "";
+        let isDeleting = false;
+
+        function type() {
+            currentWord = words[i];
+            if (isDeleting) {
+                document.getElementById("typing").textContent = currentWord.substring(0, j - 1);
+                j--;
+                if (j == 0) {
+                    isDeleting = false;
+                    i = (i + 1) % words.length;
+                }
+            } else {
+                document.getElementById("typing").textContent = currentWord.substring(0, j + 1);
+                j++;
+                if (j == currentWord.length) {
+                    isDeleting = true;
+                    setTimeout(type, 1500); // Pause at end
+                    return;
+                }
+            }
+            setTimeout(type, isDeleting ? 50 : 150);
+        }
+
+        // Scroll Reveal
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+                if (revealtop < windowheight - revealpoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        // Navbar Scroll Effect
+        window.onscroll = function() {
+            const nav = document.querySelector('nav');
+            if (window.pageYOffset > 50) {
+                nav.classList.add('py-2', 'shadow-2xl');
+            } else {
+                nav.classList.remove('py-2', 'shadow-2xl');
+            }
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            type();
+            reveal(); // check on load
+        });
+    </script>
+</body>
+</html>

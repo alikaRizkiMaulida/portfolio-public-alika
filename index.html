@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alika Rizki Maulida | Portfolio</title>
+    <!-- Favicon SVG (Data URI agar tetap Single File) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23020617' stroke='%23312e81' stroke-width='2'/%3E%3Cpath d='M50 20L80 80H20L50 20Z' stroke='url(%23grad)' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='20' r='6' fill='%23a78bfa' /%3E%3Cpath d='M42 65H58' stroke='%23a78bfa' stroke-width='8' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='20' y1='50' x2='80' y2='50' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23a78bfa'/%3E%3Cstop offset='1' stop-color='%23818cf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons for icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #020617; /* Slate 950 (Blackish) */
+            color: #f8fafc;
+        }
+
+        /* Glassmorphism Utility */
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Typing Effect Animation */
+        .typing-text::after {
+            content: "|";
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Reveal Animation on Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Active Nav Link */
+        .nav-link.active {
+            color: #a855f7; /* purple-500 */
+            border-bottom: 2px solid #a855f7;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4c1d95;
+            border-radius: 10px;
+        }
+
+        /* Floating Animation for Hero */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+
+        /* Bouncing Animation for Scroll Down */
+        @keyframes bounce-slow {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 2s infinite;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- NAVBAR START -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-full px-6 py-3">
+            <div class="text-xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
+                Alika<span class="text-white">RM.</span>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex space-x-8 font-medium">
+                <li><a href="#home" class="nav-link hover:text-purple-400 transition">Home</a></li>
+                <li><a href="#about" class="nav-link hover:text-purple-400 transition">About</a></li>
+                <li><a href="#featured" class="nav-link hover:text-purple-400 transition">Project</a></li>
+                <li><a href="#contact" class="nav-link hover:text-purple-400 transition">Contact</a></li>
+            </ul>
+
+            <div class="md:hidden">
+                <button id="menu-btn"><i data-lucide="menu"></i></button>
+            </div>
+        </div>
+    </nav>
+    <!-- NAVBAR END -->
+
+    <!-- HERO SECTION START -->
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center pt-20 px-6 text-center relative overflow-hidden">
+    <div class="absolute top-1/4 -left-20 w-80 h-80 bg-purple-600/10 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-1/4 -right-20 w-80 h-80 bg-indigo-600/10 rounded-full blur-[120px]"></div>
+
+    <div class="reveal z-10">
+        <div class="relative w-32 h-32 md:w-44 md:h-44 mx-auto mb-6 group animate-float">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 blur-sm opacity-70 group-hover:opacity-100 transition-opacity"></div>
+            <div class="relative w-full h-full rounded-full border-2 border-white/10 p-1 bg-[#121214] overflow-hidden">
+                <img src="img/gue-3.png" alt="Alika Rizki Maulida" class="w-full h-full object-cover rounded-full">
+            </div>
+        </div>
+        
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+            </span>
+            <span class="text-[10px] md:text-xs font-semibold text-purple-300 tracking-widest uppercase">Open for Collaboration</span>
+        </div>
+
+        <h2 class="text-lg md:text-xl text-gray-400 font-light mb-1">Halo, Saya</h2>
+        <h1 class="text-5xl md:text-8xl font-black mb-4 tracking-tighter leading-tight">
+            Alika Rizki <br class="md:hidden">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-indigo-500">Maulida</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl font-medium mb-6 text-gray-300">
+            Seorang <span id="typing" class="text-purple-400 border-r-2 border-purple-400 pr-1"></span>
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-10 opacity-80">
+            <span class="text-[10px] px-3 py-1 border border-white/10 rounded-md bg-white/5 text-gray-400 uppercase tracking-widest italic font-bold">#IoTDevelopment</span>
+            <span class="text-[10px] px-3 py-1 border border-white/10 rounded-md bg-white/5 text-gray-400 uppercase tracking-widest italic font-bold">#FullstackDevelopment</span>
+            <span class="text-[10px] px-3 py-1 border border-white/10 rounded-md bg-white/5 text-gray-400 uppercase tracking-widest italic font-bold">#AIEnergetic</span>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-6 justify-center items-center mb-[60px]">
+            <div class="flex gap-4">
+                <a href="alikaRizikiMaulida_250458302071_CV.pdf" target="_blank" class="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(147,51,234,0.3)] flex items-center gap-2">
+                    <i data-lucide="download" size="18"></i> Download CV
+                </a>
+                <a href="#contact" class="px-8 py-4 border border-white/10 hover:bg-white/5 text-white rounded-xl font-bold transition-all hover:scale-105">
+                    Hubungi Saya
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 animate-bounce-slow text-purple-400">
+            <i data-lucide="chevron-down" size="32"></i>
+        </div>
+
+    </section>
+    <!-- HERO SECTION END -->
+
+    <!-- ABOUT ME SECTION START -->
+    <section id="about" class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Left: Illustration/Image -->
+            <div class="reveal order-2 lg:order-1">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                    <div class="relative bg-slate-900 rounded-2xl overflow-hidden aspect-square flex items-center justify-center border border-white/10">
+                        <i data-lucide="cpu" size="120" class="text-purple-500/20 absolute"></i>
+                        <img src="img/gue-4.jpg" alt="About Alika" class="relative z-10 w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Content -->
+            <div class="reveal order-1 lg:order-2">
+                <h3 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                    <span class="w-12 h-1 bg-purple-500 rounded-full"></span>
+                    Tentang Saya
+                </h3>
+                <div class="space-y-4 text-slate-300 leading-relaxed text-lg">
+                    <p>
+                        Halo! Saya <span class="text-white font-semibold">Alika Rizki Maulida</span>, seorang mahasiswi teknik rekayasa perangkat lunak yang memiliki ketertarikan mendalam pada dunia Internet of Things (IoT) dan Web Development. Bagi saya, teknologi bukan sekadar baris kode, melainkan solusi nyata untuk memecahkan masalah sehari-hari.
+                    </p>
+                    <p>
+                        Perjalanan saya di dunia teknologi dimulai dari rasa penasaran bagaimana perangkat keras dan perangkat lunak bisa berkomunikasi secara harmonis. Hal ini mendorong saya untuk fokus mengembangkan berbagai proyek inovatif, salah satunya adalah <span class="text-purple-400">underwater drone</span> dilengkapi sensor kualitas air yang baru-baru ini saya kerjakan.
+                    </p>
+                    <p>
+                        Saya adalah pribadi yang adaptif, senang mempelajari hal-hal baru (seperti eksplorasi <span class="italic">AI tools</span> hari ini!), dan percaya bahwa kolaborasi adalah kunci untuk menciptakan inovasi yang berdampak luas.
+                    </p>
+                </div>
+
+                <!-- Status Row -->
+                <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-white/10 pt-6">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="map-pin" size="18" class="text-purple-400"></i>
+                        <span class="text-sm text-slate-400">Bogor, Indonesia</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="zap" size="18" class="text-purple-400"></i>
+                        <span class="text-sm text-slate-400">Robotics & AI</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="briefcase" size="18" class="text-purple-400"></i>
+                        <span class="text-sm text-slate-400">Collaboration Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ABOUT ME SECTION END -->
+
+<!-- EDUCATION & EXPERIENCE SECTION START -->
+    <section id="journey" class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="reveal text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Pendidikan & Pengalaman</h2>
+            <div class="w-24 h-1 bg-purple-500 mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            <!-- Kolom Pendidikan -->
+            <div class="reveal">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="p-3 bg-purple-500/20 rounded-xl text-purple-400">
+                        <i data-lucide="graduation-cap"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold">Pendidikan</h3>
+                </div>
+
+                <div class="space-y-8 border-l-2 border-purple-500/20 ml-6 pl-8 relative">
+                    <!-- Kuliah -->
+                    <div class="relative">
+                        <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7]"></div>
+                        <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">2025 — Sekarang</span>
+                        <h4 class="text-xl font-bold text-white mt-1">Politeknik IDN Bogor</h4>
+                        <p class="text-indigo-300 font-medium">D4 Teknik Rekayasa Perangkat Lunak</p>
+                        <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                            Fokus pada pengembangan sistem berbasis IoT, Web Development tingkat lanjut, dan integrasi Artificial Intelligence dalam rekayasa perangkat lunak.
+                        </p>
+                    </div>
+
+                    <!-- SMK -->
+                    <div class="relative">
+                        <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-slate-700 border-2 border-purple-500"></div>
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">2022 — 2025</span>
+                        <h4 class="text-xl font-bold text-white mt-1">SMK Fatahillah Cileungsi</h4>
+                        <p class="text-indigo-300 font-medium">Rekayasa Perangkat Lunak (RPL)</p>
+                        <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                            Mempelajari dasar-dasar pemrograman web, algoritma, basis data, dan memulai eksplorasi awal di dunia mikrokontroler.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kolom Pengalaman/Magang -->
+            <div class="reveal">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="p-3 bg-indigo-500/20 rounded-xl text-indigo-400">
+                        <i data-lucide="briefcase"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold">Pengalaman Kerja</h3>
+                </div>
+
+                <div class="space-y-8 border-l-2 border-indigo-500/20 ml-6 pl-8 relative">
+                    <!-- Magang (PKL) -->
+                    <div class="relative">
+                        <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]"></div>
+                        <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider">Januari 2024 — April 2024</span>
+                        <h4 class="text-xl font-bold text-white mt-1">Programmer (Internship/PKL)</h4>
+                        <p class="text-indigo-300 font-medium">PT. Mahardika Caraka Indonesia</p>
+                        <ul class="text-slate-400 text-sm mt-3 space-y-2 list-disc list-inside leading-relaxed">
+                            <li>Terlibat dalam pengembangan dan maintenance aplikasi berbasis web.</li>
+                            <li>Berkolaborasi dengan tim untuk memecahkan masalah teknis (debugging).</li>
+                            <li>Menerapkan prinsip clean code dan alur pengembangan perangkat lunak yang sistematis.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Side Note (Opsional) -->
+                    <div class="glass p-5 rounded-2xl border border-white/5 mt-4">
+                        <p class="text-slate-400 text-sm italic">
+                            "Berfokus pada pengembangan solusi digital yang efisien dan terus belajar mengadopsi teknologi terbaru untuk menjawab tantangan industri."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- EDUCATION & EXPERIENCE SECTION END -->
+
+<!-- FEATURED PROJECT START -->
+    <section id="featured" class="py-20 bg-slate-900/50 relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="reveal text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Proyek Unggulan</h2>
+                <div class="w-24 h-1 bg-purple-500 mx-auto mb-4"></div>
+                <p class="text-slate-400">Eksplorasi teknologi dari hardware hingga software untuk solusi nyata.</p>
+            </div>
+
+            <!-- Grid Container: 1 Kolom di HP, 2 di Tablet, 3 di Desktop -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- CARD 1: UNDERWATER DRONE -->
+                <div class="reveal glass rounded-3xl overflow-hidden shadow-2xl border border-purple-500/20 flex flex-col hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="img/features-3.png" alt="Underwater Drone" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="px-3 py-1 bg-purple-500/80 backdrop-blur-md text-white text-[10px] uppercase font-bold rounded-lg">IoT</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-3 text-purple-300">Underwater Drone: Water Quality Monitor</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Alat monitoring sungai/danau real-time menggunakan ESP32 dan 3 sensor (Turbidity, TDS, Suhu). Membantu memantau pencemaran air via dashboard digital.
+                        </p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center gap-2 text-xs text-slate-300">
+                                <i data-lucide="cpu" size="14" class="text-purple-400"></i> ESP32 & Motor Driver
+                            </div>
+                            <div class="flex items-center gap-2 text-xs text-slate-300">
+                                <i data-lucide="bar-chart-3" size="14" class="text-purple-400"></i> Real-time Dashboard
+                            </div>
+                        </div>
+                        <a href="https://youtu.be/KkfxIWejOsM?si=YuEsWeJZ0kj7Zrz4" target="_blank" class="inline-flex items-center gap-2 text-purple-400 text-sm font-semibold hover:gap-4 transition-all">
+                            Lihat Dokumentasi <i data-lucide="arrow-right" size="16"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 2: LANDING PAGE JASA -->
+                <div class="reveal glass rounded-3xl overflow-hidden shadow-2xl border border-purple-500/20 flex flex-col hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="img/features-2.png" alt="Business Landing Page" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="px-3 py-1 bg-indigo-500/80 backdrop-blur-md text-white text-[10px] uppercase font-bold rounded-lg">Web Business</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-3 text-purple-300">Landing Page Penjualan Jasa</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Platform untuk branding digital dan komersialisasi skill. Menyelesaikan masalah branding agar developer tidak hanya bisa coding, tapi juga mampu menjual jasa secara profesional.
+                        </p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center gap-2 text-xs text-slate-300">
+                                <i data-lucide="briefcase" size="14" class="text-purple-400"></i> Personal Branding Tool
+                            </div>
+                            <div class="flex items-center gap-2 text-xs text-slate-300">
+                                <i data-lucide="rocket" size="14" class="text-purple-400"></i> Digital Marketing Ready
+                            </div>
+                        </div>
+                        <a href="https://jasa-alika-iot.alikarizkimaulida.my.id/" target="_blank" class="inline-flex items-center gap-2 text-purple-400 text-sm font-semibold hover:gap-4 transition-all">
+                            Lihat Proyek <i data-lucide="arrow-right" size="16"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 3: TAHFIDZ MONITORING -->
+                <div class="reveal glass rounded-3xl overflow-hidden shadow-2xl border border-purple-500/20 flex flex-col hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="img/features-1.png" alt="Tahfidz System" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="px-3 py-1 bg-blue-500/80 backdrop-blur-md text-white text-[10px] uppercase font-bold rounded-lg">Fullstack & AI</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-3 text-purple-300">AI-Powered Tahfidz Monitoring</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Sistem pemantau hafalan santri yang dikembangkan dengan bantuan AI Tools. Proyek ini adalah bentuk problem solving untuk efisiensi tracking hafalan sekaligus eksplorasi workflow AI.
+                        </p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center gap-2 text-xs text-slate-300">
+                                <i data-lucide="brain-circuit" size="14" class="text-purple-400"></i> AI Implementation
+                            </div>
+                            <div class="flex items-center gap-2 text-xs text-slate-300">
+                                <i data-lucide="users" size="14" class="text-purple-400"></i> Management System
+                            </div>
+                        </div>
+                        <a href="http://tahfidz-monitoring.alikarizkimaulida.my.id/" target="_blank" class="inline-flex items-center gap-2 text-purple-400 text-sm font-semibold hover:gap-4 transition-all">
+                            Detail Proyek <i data-lucide="arrow-right" size="16"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- FEATURED PROJECT END -->
+
+    <!-- PORTFOLIO GALLERY START -->
+    <section class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="reveal text-center mb-12">
+            <h2 class="text-3xl font-bold mb-2">Portfolio Lainnya</h2>
+            <div class="w-20 h-1 bg-purple-500 mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Project 1-6 -->
+            <script>
+                const projectImg = [
+                "img/app-1.png", 
+                "img/web-1.png",
+                "img/image-1.jpg", 
+                "img/web-3.png",
+                "img/image-2.jpg",
+                "img/app-3.png", 
+                ]
+                const projectTitles = [
+                    "My Reminder App (Ui Flutter)", 
+                    "OfficeLink Website", 
+                    "LED IOT Arduino", 
+                    "Portfolio design",
+                    "Tempat Sampah Otomatis Arduino", 
+                    "HafalanQ App", 
+                ];
+                const projectDesc = [
+                    "Pengembangan antarmuka (UI) aplikasi Reminder yang modern dan responsif menggunakan Flutter, dengan implementasi GetX sebagai State Management untuk alur data yang efisien.",
+                    "Perancangan Landing Page profesional untuk platform presensi karyawan 'OfficeLink', fokus pada user experience (UX) untuk memudahkan manajemen kehadiran karyawan perusahaan.",
+                    "Eksperimen sistem kendali lampu jarak jauh berbasis IoT menggunakan mikrokontroler Arduino, mencakup perancangan rangkaian listrik dan logika pemrograman LED.",
+                    "Proses desain visual dan penyusunan struktur portofolio UI/UX yang mencerminkan identitas profesional, menggunakan prinsip desain modern untuk portofolio digital.",
+                    "Inovasi Smart Trash Bin berbasis Arduino Uno yang dilengkapi sensor ultrasonik untuk mendeteksi objek, memungkinkan sistem buka-tutup tutup sampah secara otomatis dan higienis.",
+                    "Aplikasi HafalanQ: Platform manajemen setoran hafalan Quran yang mengintegrasikan Flutter di sisi mobile dan Laravel sebagai backend API untuk sinkronisasi data secara real-time."
+                ];
+                const projectLabel = [
+                    "UI Design",
+                    "User Experience",
+                    "Mikrocontroller Arduino",
+                    "Portfolio Digital",
+                    "Sensor Ultrasonik",
+                    "Integrasi"
+                ]
+                for (let i = 0; i < 6; i++) {
+                    document.write(`
+                    <div class="reveal group relative overflow-hidden rounded-xl bg-slate-900 border border-white/5 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                        <div class="aspect-video bg-slate-800">
+                            <img src="${projectImg[i]}" alt="Project" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+                        </div>
+                        <div class="p-5">
+                            <h4 class="font-bold text-lg mb-1">${projectTitles[i]}</h4>
+                            <p class="text-slate-400 text-sm">${projectDesc[i]}</p>
+                            <div class="mt-4 flex gap-2">
+                                <span class="text-[10px] uppercase tracking-wider text-purple-400 border border-purple-400/30 px-2 py-0.5 rounded">${projectLabel[i]}</span>
+                            </div>
+                        </div>
+                    </div>
+                    `);
+                }
+            </script>
+        </div>
+    </section>
+    <!-- PORTFOLIO GALLERY END -->
+
+    <!-- TECH STACK SECTION START -->
+    <section id="tech-stack" class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="reveal text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-2 text-white">Tech Stack</h2>
+                <div class="w-24 h-1 bg-purple-500 mx-auto"></div>
+        </div>
+
+        <!-- Grid: 2 kolom di HP, 3 di Tablet, 6 di Desktop -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+            
+            <!-- Flutter -->
+            <div class="reveal group glass p-6 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-4 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1">
+                <img src="https://cdn.simpleicons.org/flutter/02569B" alt="Flutter" class="w-10 h-10 transition-transform group-hover:scale-110">
+                <span class="text-sm font-medium text-slate-300 group-hover:text-white">Flutter</span>
+            </div>
+
+            <!-- Laravel -->
+            <div class="reveal group glass p-6 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-4 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1">
+                <img src="https://cdn.simpleicons.org/laravel/FF2D20" alt="Laravel" class="w-10 h-10 transition-transform group-hover:scale-110">
+                <span class="text-sm font-medium text-slate-300 group-hover:text-white">Laravel</span>
+            </div>
+
+            <!-- Tailwind CSS -->
+            <div class="reveal group glass p-6 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-4 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1">
+                <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="Tailwind" class="w-10 h-10 transition-transform group-hover:scale-110">
+                <span class="text-sm font-medium text-slate-300 group-hover:text-white">Tailwind</span>
+            </div>
+
+            <!-- Bootstrap -->
+            <div class="reveal group glass p-6 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-4 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1">
+                <img src="https://cdn.simpleicons.org/bootstrap/7952B3" alt="Bootstrap" class="w-10 h-10 transition-transform group-hover:scale-110">
+                <span class="text-sm font-medium text-slate-300 group-hover:text-white">Bootstrap</span>
+            </div>
+
+            <!-- MySQL -->
+            <div class="reveal group glass p-6 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-4 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1">
+                <img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL" class="w-10 h-10 transition-transform group-hover:scale-110">
+                <span class="text-sm font-medium text-slate-300 group-hover:text-white">MySQL</span>
+            </div>
+
+            <!-- Postman -->
+            <div class="reveal group glass p-6 rounded-2xl border border-white/5 flex flex-col items-center justify-center gap-4 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1">
+                <img src="https://cdn.simpleicons.org/postman/FF6C37" alt="Postman" class="w-10 h-10 transition-transform group-hover:scale-110">
+                <span class="text-sm font-medium text-slate-300 group-hover:text-white">Postman</span>
+            </div>
+
+        </div>
+    </section>
+    <!-- TECH STACK SECTION END -->
+
+    <!-- CONTACT SECTION START -->
+    <section id="contact" class="py-20 bg-slate-950 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="reveal text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Mari Berkolaborasi</h2>
+                <p class="text-slate-400">Punya ide menarik? Mari kita wujudkan bersama.</p>
+            </div>
+
+            <div class="reveal glass p-8 rounded-3xl border border-white/10">
+                <form action="#" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-slate-300">Nama Lengkap</label>
+                            <input type="text" class="w-full bg-slate-800 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 transition" placeholder="Alika Rizki">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-slate-300">Email</label>
+                            <input type="email" class="w-full bg-slate-800 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 transition" placeholder="alika@email.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-slate-300">Pesan</label>
+                        <textarea rows="4" class="w-full bg-slate-800 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 transition" placeholder="Tuliskan pesan Anda di sini..."></textarea>
+                    </div>
+                    <button class="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl font-bold hover:shadow-lg hover:shadow-purple-500/30 transition-all hover:scale-[1.01]">
+                        Kirim Pesan Sekarang
+                    </button>
+                </form>
+
+                <div class="mt-12 pt-8 border-t border-white/10 flex flex-wrap justify-center gap-8">
+                    <a href="https://www.linkedin.com/in/alika-rizki-maulida-998096369/" target="_blank" class="flex items-center gap-2 text-slate-400 hover:text-purple-400 transition">
+                        <i data-lucide="linkedin" size="20"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/alikaRizkiMaulida" target="_blank" class="flex items-center gap-2 text-slate-400 hover:text-purple-400 transition">
+                        <i data-lucide="github" size="20"></i> GitHub
+                    </a>
+                    <a href="https://www.instagram.com/alika_arm147/" target="_blank" class="flex items-center gap-2 text-slate-400 hover:text-purple-400 transition">
+                        <i data-lucide="instagram" size="20"></i> Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CONTACT SECTION END -->
+
+    <!-- FOOTER START -->
+    <footer class="py-10 border-t border-white/5 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 Alika Rizki Maulida. Made with ❤️ & Tech.</p>
+    </footer>
+    <!-- FOOTER END -->
+
+    <!-- SCRIPTS -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Sticky Navbar Glassmorphism Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2');
+                nav.querySelector('div').classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('py-2');
+                nav.querySelector('div').classList.remove('shadow-xl');
+            }
+        });
+
+        // Typing Effect
+        const words = ["IoT Enthusiast", "Web Developer", "Problem Solver", "AI Explorer"];
+        let i = 0;
+        let j = 0;
+        let currentWord = "";
+        let isDeleting = false;
+
+        function type() {
+            currentWord = words[i];
+            if (isDeleting) {
+                document.getElementById("typing").textContent = currentWord.substring(0, j - 1);
+                j--;
+                if (j == 0) {
+                    isDeleting = false;
+                    i++;
+                    if (i == words.length) i = 0;
+                }
+            } else {
+                document.getElementById("typing").textContent = currentWord.substring(0, j + 1);
+                j++;
+                if (j == currentWord.length) {
+                    isDeleting = true;
+                    setTimeout(type, 2000); // Pause at end
+                    return;
+                }
+            }
+            setTimeout(type, isDeleting ? 100 : 150);
+        }
+        type();
+
+        // Reveal Animation logic
+        const reveals = document.querySelectorAll('.reveal');
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        reveals.forEach(reveal => observer.observe(reveal));
+
+        // Active Navbar Link update
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

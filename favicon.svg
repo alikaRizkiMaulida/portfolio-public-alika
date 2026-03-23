@@ -1,0 +1,18 @@
+<svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Bulat yang Elegan -->
+  <circle cx="50" cy="50" r="48" fill="#020617" stroke="#312e81" stroke-width="2"/>
+  
+  <!-- Simbol Segitiga / Huruf 'A' (Alika) -->
+  <path d="M50 20L80 80H20L50 20Z" stroke="url(#grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Aksen Titik Sirkuit (Ciri khas IoT/Tech) -->
+  <circle cx="50" cy="20" r="6" fill="#a78bfa" />
+  <path d="M42 65H58" stroke="#a78bfa" stroke-width="8" stroke-linecap="round"/>
+
+  <defs>
+    <linearGradient id="grad" x1="20" y1="50" x2="80" y2="50" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+</svg>
