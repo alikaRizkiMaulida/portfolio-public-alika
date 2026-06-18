@@ -1,0 +1,80 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #020617;
+    color: #f8fafc;
+}
+
+.glass {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.typing-text::after {
+    content: "|";
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-link.active {
+    color: #a855f7;
+    border-bottom: 2px solid #a855f7;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #020617;
+}
+::-webkit-scrollbar-thumb {
+    background: #4c1d95;
+    border-radius: 10px;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }
+
+@keyframes bounce-slow {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+.animate-bounce-slow {
+    animation: bounce-slow 2s infinite;
+}
+
+.filter-btn {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+    cursor: pointer;
+}
+.filter-btn:hover {
+    background: rgba(168, 85, 247, 0.15);
+    border-color: rgba(168, 85, 247, 0.3);
+    color: #d8b4fe;
+}
+.filter-btn.active {
+    background: rgba(168, 85, 247, 0.2);
+    border-color: #a855f7;
+    color: #a855f7;
+}
