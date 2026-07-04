@@ -62,6 +62,14 @@ body {
     animation: bounce-slow 2s infinite;
 }
 
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
 .filter-btn {
     background: rgba(15, 23, 42, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -77,4 +85,30 @@ body {
     background: rgba(168, 85, 247, 0.2);
     border-color: #a855f7;
     color: #a855f7;
+}
+
+/* Mobile improvements */
+.mobile-nav-link.active {
+    color: #a855f7;
+}
+
+@media (max-width: 640px) {
+    .hero-subtitle {
+        font-size: 0.875rem;
+    }
+}
+
+#cv-modal {
+    animation: modalFadeIn 0.2s ease-out;
+}
+#cv-modal > div:last-child {
+    animation: modalScaleIn 0.25s ease-out;
+}
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes modalScaleIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
 }

@@ -18,9 +18,9 @@
 <body class="overflow-x-hidden">
 
     <!-- NAVBAR START -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 px-6 md:px-12">
-        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-full px-6 py-3">
-            <div class="text-xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 px-4 md:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-full px-4 md:px-6 py-3">
+            <div class="md:text-xl text-lg font-bold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
                 Alika<span class="text-white">RM.</span>
             </div>
             
@@ -33,14 +33,26 @@
             </ul>
 
             <div class="md:hidden">
-                <button id="menu-btn"><i data-lucide="menu"></i></button>
+                <button id="menu-btn" class="text-white p-1"><i data-lucide="menu"></i></button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden px-4 mt-2">
+            <div class="glass rounded-2xl px-6 py-6 border border-white/10">
+                <ul class="flex flex-col space-y-4 font-medium text-center">
+                    <li><a href="#home" class="mobile-nav-link block py-2 hover:text-purple-400 transition" onclick="closeMobileMenu()">Home</a></li>
+                    <li><a href="#about" class="mobile-nav-link block py-2 hover:text-purple-400 transition" onclick="closeMobileMenu()">About</a></li>
+                    <li><a href="#featured" class="mobile-nav-link block py-2 hover:text-purple-400 transition" onclick="closeMobileMenu()">Project</a></li>
+                    <li><a href="#contact" class="mobile-nav-link block py-2 hover:text-purple-400 transition" onclick="closeMobileMenu()">Contact</a></li>
+                </ul>
             </div>
         </div>
     </nav>
     <!-- NAVBAR END -->
 
     <!-- HERO SECTION START -->
-    <section id="home" class="min-h-screen flex flex-col justify-center items-center pt-20 px-6 text-center relative overflow-hidden">
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center pt-20 px-4 sm:px-6 text-center relative overflow-hidden">
     <div class="absolute top-1/4 -left-20 w-80 h-80 bg-purple-600/10 rounded-full blur-[120px]"></div>
     <div class="absolute bottom-1/4 -right-20 w-80 h-80 bg-indigo-600/10 rounded-full blur-[120px]"></div>
 
@@ -48,7 +60,7 @@
         <div class="relative w-32 h-32 md:w-44 md:h-44 mx-auto mb-6 group animate-float">
             <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 blur-sm opacity-70 group-hover:opacity-100 transition-opacity"></div>
             <div class="relative w-full h-full rounded-full border-2 border-white/10 p-1 bg-[#121214] overflow-hidden">
-                <img src="img/gue-3.png" alt="Alika Rizki Maulida" class="w-full h-full object-cover rounded-full">
+                <img src="img/gue-3.png" alt="Alika Rizki Maulida" class="w-full h-full object-cover rounded-full" loading="lazy">
             </div>
         </div>
         
@@ -61,7 +73,7 @@
         </div>
 
         <h2 class="text-lg md:text-xl text-gray-400 font-light mb-1">Halo, Saya</h2>
-        <h1 class="text-5xl md:text-8xl font-black mb-4 tracking-tighter leading-tight">
+        <h1 class="text-[2.5rem] sm:text-5xl md:text-8xl font-black mb-4 tracking-tighter leading-tight">
             Alika Rizki <br class="md:hidden">
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-indigo-500">Maulida</span>
         </h1>
@@ -78,9 +90,9 @@
 
         <div class="flex flex-col md:flex-row gap-6 justify-center items-center mb-[60px]">
             <div class="flex gap-4">
-                <a href="alikaRizkiMaulida_new_cv.pdf" target="_blank" class="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(147,51,234,0.3)] flex items-center gap-2">
-                    <i data-lucide="download" size="18"></i> Download CV
-                </a>
+                <button id="cv-btn" class="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(147,51,234,0.3)] flex items-center gap-2">
+                    <i data-lucide="file-text" size="18"></i> CV Saya
+                </button>
                 <a href="#contact" class="px-8 py-4 border border-white/10 hover:bg-white/5 text-white rounded-xl font-bold transition-all hover:scale-105">
                     Hubungi Saya
                 </a>
@@ -94,10 +106,40 @@
         </div>
 
     </section>
+
+    <!-- CV Modal -->
+    <div id="cv-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="cv-modal-overlay"></div>
+        <div class="relative glass rounded-2xl sm:rounded-3xl border border-white/10 p-6 sm:p-8 w-full max-w-xs sm:max-w-sm shadow-2xl text-center">
+            <button id="cv-modal-close" class="absolute top-3 right-3 sm:top-4 sm:right-4 text-slate-400 hover:text-white transition">
+                <i data-lucide="x" size="18" class="sm:hidden"></i>
+                <i data-lucide="x" size="20" class="hidden sm:inline"></i>
+            </button>
+            <div class="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl bg-purple-500/20 flex items-center justify-center">
+                <i data-lucide="file-text" size="22" class="sm:hidden text-purple-400"></i>
+                <i data-lucide="file-text" size="28" class="hidden sm:inline text-purple-400"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold mb-1">CV Saya</h3>
+            <p class="text-slate-400 text-xs sm:text-sm mb-5 sm:mb-6">Lihat atau download CV Alika Rizki Maulida</p>
+            <div class="space-y-2 sm:space-y-3">
+                <a href="AlikaRizkiMaulidaResume.pdf" target="_blank" class="flex items-center justify-center gap-2 sm:gap-3 w-full py-3 sm:py-4 bg-purple-600 hover:bg-purple-700 rounded-xl font-semibold text-sm sm:text-base transition-all hover:scale-[1.02]">
+                    <i data-lucide="eye" size="18" class="sm:hidden"></i>
+                    <i data-lucide="eye" size="20" class="hidden sm:inline"></i>
+                    Lihat CV
+                </a>
+                <a href="AlikaRizkiMaulidaResume.pdf" download="CV - Alika Rizki Maulida.pdf" class="flex items-center justify-center gap-2 sm:gap-3 w-full py-3 sm:py-4 border border-white/10 hover:bg-white/5 rounded-xl font-semibold text-sm sm:text-base transition-all hover:scale-[1.02]">
+                    <i data-lucide="download" size="18" class="sm:hidden"></i>
+                    <i data-lucide="download" size="20" class="hidden sm:inline"></i>
+                    Download CV
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- CV Modal End -->
     <!-- HERO SECTION END -->
 
     <!-- ABOUT ME SECTION START -->
-    <section id="about" class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+    <section id="about" class="py-16 md:py-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <!-- Left: Illustration/Image -->
             <div class="reveal order-2 lg:order-1">
@@ -105,7 +147,7 @@
                     <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
                     <div class="relative bg-slate-900 rounded-2xl overflow-hidden aspect-square flex items-center justify-center border border-white/10">
                         <i data-lucide="cpu" size="120" class="text-purple-500/20 absolute"></i>
-                        <img src="img/gue-4.jpg" alt="About Alika" class="relative z-10 w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+                        <img src="img/gue-4.jpg" alt="About Alika" class="relative z-10 w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -116,7 +158,7 @@
                     <span class="w-12 h-1 bg-purple-500 rounded-full"></span>
                     Tentang Saya
                 </h3>
-                <div class="space-y-4 text-slate-300 leading-relaxed text-lg">
+                <div class="space-y-4 text-slate-300 leading-relaxed text-sm md:text-lg">
                     <p>
                         Halo! Saya <span class="text-white font-semibold">Alika Rizki Maulida</span>, mahasiswi <span class="text-purple-300 font-medium">Teknologi Rekayasa Perangkat Lunak</span> yang bergerak di bidang <span class="text-indigo-300 font-medium">Web/Mobile Development</span> dan <span class="text-purple-300 font-medium">Internet of Things (IoT)</span>. Bagi saya, teknologi adalah ruang untuk menciptakan solusi digital yang fungsional dan berdampak nyata.
                     </p>
@@ -148,8 +190,8 @@
     </section>
     <!-- ABOUT ME SECTION END -->
 
-<!-- EDUCATION & EXPERIENCE SECTION START -->
-    <section id="journey" class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+    <!-- EDUCATION & EXPERIENCE SECTION START -->
+    <section id="journey" class="py-16 md:py-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
         <div class="reveal text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Pendidikan & Pengalaman</h2>
             <div class="w-24 h-1 bg-purple-500 mx-auto"></div>
@@ -166,11 +208,11 @@
                     <h3 class="text-2xl font-bold">Pendidikan</h3>
                 </div>
 
-                <div class="space-y-8 border-l-2 border-purple-500/20 ml-6 pl-8 relative">
+                <div class="space-y-6 md:space-y-8 border-l-2 border-purple-500/20 ml-4 md:ml-6 pl-4 md:pl-8 relative">
                     <!-- Kuliah -->
                     <div class="relative">
-                        <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7]"></div>
-                        <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">2025 — Sekarang</span>
+                        <div class="absolute -left-[25px] md:-left-[41px] top-1 w-3 h-3 md:w-4 h-4 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7]"></div>
+                        <span class="text-[10px] md:text-xs font-bold text-purple-400 uppercase tracking-wider">2025 — Sekarang</span>
                         <h4 class="text-xl font-bold text-white mt-1">Politeknik IDN Bogor</h4>
                         <p class="text-indigo-300 font-medium">D4 Teknik Rekayasa Perangkat Lunak</p>
                         <p class="text-slate-400 text-sm mt-2 leading-relaxed">
@@ -180,7 +222,7 @@
 
                     <!-- SMK -->
                     <div class="relative">
-                        <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-slate-700 border-2 border-purple-500"></div>
+                        <div class="absolute -left-[25px] md:-left-[41px] top-1 w-3 h-3 md:w-4 h-4 rounded-full bg-slate-700 border-2 border-purple-500"></div>
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">2022 — 2025</span>
                         <h4 class="text-xl font-bold text-white mt-1">SMK Fatahillah Cileungsi</h4>
                         <p class="text-indigo-300 font-medium">Rekayasa Perangkat Lunak (RPL)</p>
@@ -200,10 +242,10 @@
                     <h3 class="text-2xl font-bold">Pengalaman Kerja</h3>
                 </div>
 
-                <div class="space-y-8 border-l-2 border-indigo-500/20 ml-6 pl-8 relative">
+                <div class="space-y-6 md:space-y-8 border-l-2 border-indigo-500/20 ml-4 md:ml-6 pl-4 md:pl-8 relative">
                     <!-- Magang (PKL) -->
                     <div class="relative">
-                        <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]"></div>
+                        <div class="absolute -left-[25px] md:-left-[41px] top-1 w-3 h-3 md:w-4 h-4 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]"></div>
                         <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider">Januari 2024 — April 2024</span>
                         <h4 class="text-xl font-bold text-white mt-1">Programmer (Internship/PKL)</h4>
                         <p class="text-indigo-300 font-medium">PT. Mahardika Caraka Indonesia</p>
@@ -229,30 +271,30 @@
 
 <!-- FEATURED PROJECT START -->
     <section id="featured" class="py-20 bg-slate-900/50 relative">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
             <div class="reveal text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Proyek Unggulan</h2>
                 <div class="w-24 h-1 bg-purple-500 mx-auto mb-4"></div>
                 <p class="text-slate-400">Eksplorasi teknologi dari hardware hingga software untuk solusi nyata.</p>
             </div>
 
-            <!-- Grid Container: 1 Kolom di HP, 2 di Tablet, 3 di Desktop -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Grid Container: Horizontal scroll di HP, grid di desktop -->
+            <div class="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide md:overflow-visible pb-4">
                 
                 <!-- CARD 1: UNDERWATER DRONE -->
-                <div class="reveal glass rounded-3xl overflow-hidden shadow-2xl border border-purple-500/20 flex flex-col hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="img/features-3.png" alt="Underwater Drone" class="w-full h-full object-cover">
-                        <div class="absolute top-4 left-4 flex gap-2">
-                            <span class="px-3 py-1 bg-purple-500/80 backdrop-blur-md text-white text-[10px] uppercase font-bold rounded-lg">IoT</span>
+                <div class="snap-start shrink-0 w-[80vw] sm:w-[75vw] md:w-auto reveal glass rounded-3xl overflow-hidden shadow-2xl border border-purple-500/20 flex flex-col hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative h-48 md:h-56 overflow-hidden">
+                        <img src="img/features-3.png" alt="Underwater Drone" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute top-3 left-3 md:top-4 md:left-4 flex gap-2">
+                            <span class="px-2 md:px-3 py-1 bg-purple-500/80 backdrop-blur-md text-white text-[10px] uppercase font-bold rounded-lg">IoT</span>
                         </div>
                     </div>
-                    <div class="p-8 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold mb-3 text-purple-300">Underwater Drone: Water Quality Monitor</h3>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                    <div class="p-5 md:p-8 flex flex-col flex-grow">
+                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3 text-purple-300">Underwater Drone: Water Quality Monitor</h3>
+                        <p class="text-slate-400 text-xs md:text-sm mb-4 md:mb-6 flex-grow leading-relaxed">
                             Alat monitoring sungai/danau real-time menggunakan ESP32 dan 3 sensor (Turbidity, TDS, Suhu). Membantu memantau pencemaran air via dashboard digital.
                         </p>
-                        <div class="space-y-2 mb-6">
+                        <div class="space-y-1 md:space-y-2 mb-4 md:mb-6">
                             <div class="flex items-center gap-2 text-xs text-slate-300">
                                 <i data-lucide="cpu" size="14" class="text-purple-400"></i> ESP32 & Motor Driver
                             </div>
@@ -267,19 +309,19 @@
                 </div>
 
                 <!-- CARD 2: LANDING PAGE JASA -->
-                <div class="reveal glass rounded-3xl overflow-hidden shadow-2xl border border-purple-500/20 flex flex-col hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="img/features-2.png" alt="Business Landing Page" class="w-full h-full object-cover">
-                        <div class="absolute top-4 left-4 flex gap-2">
-                            <span class="px-3 py-1 bg-indigo-500/80 backdrop-blur-md text-white text-[10px] uppercase font-bold rounded-lg">Web Business</span>
+                <div class="snap-start shrink-0 w-[80vw] sm:w-[75vw] md:w-auto reveal glass rounded-3xl overflow-hidden shadow-2xl border border-purple-500/20 flex flex-col hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative h-48 md:h-56 overflow-hidden">
+                        <img src="img/features-2.png" alt="Business Landing Page" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute top-3 left-3 md:top-4 md:left-4 flex gap-2">
+                            <span class="px-2 md:px-3 py-1 bg-indigo-500/80 backdrop-blur-md text-white text-[10px] uppercase font-bold rounded-lg">Web Business</span>
                         </div>
                     </div>
-                    <div class="p-8 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold mb-3 text-purple-300">Landing Page Penjualan Jasa</h3>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                    <div class="p-5 md:p-8 flex flex-col flex-grow">
+                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3 text-purple-300">Landing Page Penjualan Jasa</h3>
+                        <p class="text-slate-400 text-xs md:text-sm mb-4 md:mb-6 flex-grow leading-relaxed">
                             Platform untuk branding digital dan komersialisasi skill. Menyelesaikan masalah branding agar developer tidak hanya bisa coding, tapi juga mampu menjual jasa secara profesional.
                         </p>
-                        <div class="space-y-2 mb-6">
+                        <div class="space-y-1 md:space-y-2 mb-4 md:mb-6">
                             <div class="flex items-center gap-2 text-xs text-slate-300">
                                 <i data-lucide="briefcase" size="14" class="text-purple-400"></i> Personal Branding Tool
                             </div>
@@ -294,19 +336,19 @@
                 </div>
 
                 <!-- CARD 3: LINGUAGO -->
-                <div class="reveal glass rounded-3xl overflow-hidden shadow-2xl border border-purple-500/20 flex flex-col hover:scale-[1.02] transition-transform duration-300">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="img/app-4.png" alt="LinguaGo" class="w-full h-full object-cover">
-                        <div class="absolute top-4 left-4 flex gap-2">
-                            <span class="px-3 py-1 bg-emerald-500/80 backdrop-blur-md text-white text-[10px] uppercase font-bold rounded-lg">Fullstack</span>
+                <div class="snap-start shrink-0 w-[80vw] sm:w-[75vw] md:w-auto reveal glass rounded-3xl overflow-hidden shadow-2xl border border-purple-500/20 flex flex-col hover:scale-[1.02] transition-transform duration-300">
+                    <div class="relative h-48 md:h-56 overflow-hidden">
+                        <img src="img/app-4.png" alt="LinguaGo" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute top-3 left-3 md:top-4 md:left-4 flex gap-2">
+                            <span class="px-2 md:px-3 py-1 bg-emerald-500/80 backdrop-blur-md text-white text-[10px] uppercase font-bold rounded-lg">Fullstack</span>
                         </div>
                     </div>
-                    <div class="p-8 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold mb-3 text-purple-300">LinguaGo: Belajar Bahasa & Korea</h3>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                    <div class="p-5 md:p-8 flex flex-col flex-grow">
+                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3 text-purple-300">LinguaGo: Belajar Bahasa & Korea</h3>
+                        <p class="text-slate-400 text-xs md:text-sm mb-4 md:mb-6 flex-grow leading-relaxed">
                             Aplikasi belajar bahasa interaktif (English & Korea) dengan fitur gamifikasi. Mobile dikembangkan dengan Flutter dan backend menggunakan Laravel. Tersedia APK download langsung dari landing page.
                         </p>
-                        <div class="space-y-2 mb-6">
+                        <div class="space-y-1 md:space-y-2 mb-4 md:mb-6">
                             <div class="flex items-center gap-2 text-xs text-slate-300">
                                 <i data-lucide="smartphone" size="14" class="text-purple-400"></i> Flutter (Mobile)
                             </div>
@@ -329,26 +371,26 @@
     <!-- FEATURED PROJECT END -->
 
     <!-- PORTFOLIO GALLERY START -->
-    <section class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+    <section class="py-16 md:py-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
         <div class="reveal text-center mb-12">
             <h2 class="text-3xl font-bold mb-2">Portfolio Lainnya</h2>
             <div class="w-20 h-1 bg-purple-500 mx-auto mb-6"></div>
-            <div class="flex flex-wrap justify-center gap-3" id="filter-tabs">
-                <button class="filter-btn active px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="all">All</button>
-                <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="mobile">Mobile</button>
-                <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="web">Web</button>
-                <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="iot">IoT</button>
-                <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="uiux">UI/UX</button>
+            <div class="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 overflow-x-auto scrollbar-hide pb-2 md:pb-0" id="filter-tabs">
+                <button class="filter-btn active whitespace-nowrap px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all" data-filter="all">All</button>
+                <button class="filter-btn whitespace-nowrap px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all" data-filter="mobile">Mobile</button>
+                <button class="filter-btn whitespace-nowrap px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all" data-filter="web">Web</button>
+                <button class="filter-btn whitespace-nowrap px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all" data-filter="iot">IoT</button>
+                <button class="filter-btn whitespace-nowrap px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all" data-filter="uiux">UI/UX</button>
             </div>
         </div>
 
-        <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id="portfolio-grid" class="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide md:overflow-visible pb-4">
         </div>
     </section>
     <!-- PORTFOLIO GALLERY END -->
 
     <!-- TECH STACK SECTION START -->
-    <section id="tech-stack" class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+    <section id="tech-stack" class="py-16 md:py-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
         <div class="reveal text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-2 text-white">Tech Stack</h2>
                 <div class="w-24 h-1 bg-purple-500 mx-auto"></div>
@@ -399,13 +441,13 @@
 
     <!-- CONTACT SECTION START -->
     <section id="contact" class="py-20 bg-slate-950 relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
             <div class="reveal text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Mari Berkolaborasi</h2>
                 <p class="text-slate-400">Punya ide menarik? Mari kita wujudkan bersama.</p>
             </div>
 
-            <div class="reveal glass p-8 rounded-3xl border border-white/10">
+            <div class="reveal glass p-5 md:p-8 rounded-3xl border border-white/10">
                 <form action="#" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
@@ -426,7 +468,7 @@
                     </button>
                 </form>
 
-                <div class="mt-12 pt-8 border-t border-white/10 flex flex-wrap justify-center gap-8">
+                <div class="mt-12 pt-8 border-t border-white/10 flex flex-wrap justify-center gap-4 md:gap-8">
                     <a href="https://www.linkedin.com/in/alika-rizki-maulida-998096369/" target="_blank" class="flex items-center gap-2 text-slate-400 hover:text-purple-400 transition">
                         <i data-lucide="linkedin" size="20"></i> LinkedIn
                     </a>

@@ -15,14 +15,14 @@ function renderProjects(filter = "all") {
     let html = '';
     filtered.forEach(p => {
         html += `
-        <div class="reveal group relative overflow-hidden rounded-xl bg-slate-900 border border-white/5 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-2 shadow-lg">
+        <div class="snap-start shrink-0 w-[80vw] sm:w-[75vw] md:w-auto reveal group relative overflow-hidden rounded-xl bg-slate-900 border border-white/5 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-2 shadow-lg">
             <div class="aspect-video bg-slate-800">
-                <img src="${p.img}" alt="Project" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+                <img src="${p.img}" alt="Project" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition" loading="lazy">
             </div>
-            <div class="p-5">
-                <h4 class="font-bold text-lg mb-1">${p.title}</h4>
-                <p class="text-slate-400 text-sm">${p.desc}</p>
-                <div class="mt-4 flex gap-2">
+            <div class="p-4 md:p-5">
+                <h4 class="font-bold text-base md:text-lg mb-1">${p.title}</h4>
+                <p class="text-slate-400 text-xs md:text-sm">${p.desc}</p>
+                <div class="mt-3 md:mt-4 flex gap-2">
                     <span class="text-[10px] uppercase tracking-wider text-purple-400 border border-purple-400/30 px-2 py-0.5 rounded">${p.label}</span>
                 </div>
             </div>
@@ -40,6 +40,56 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
         renderProjects(btn.dataset.filter);
     });
 });
+
+// CV Modal
+const cvBtn = document.getElementById('cv-btn');
+const cvModal = document.getElementById('cv-modal');
+const cvModalOverlay = document.getElementById('cv-modal-overlay');
+const cvModalClose = document.getElementById('cv-modal-close');
+
+if (cvBtn) {
+    cvBtn.addEventListener('click', () => {
+        cvModal.classList.remove('hidden');
+        cvModal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    });
+    function closeCvModal() {
+        cvModal.classList.add('hidden');
+        cvModal.classList.remove('flex');
+        document.body.style.overflow = '';
+    }
+    cvModalOverlay.addEventListener('click', closeCvModal);
+    cvModalClose.addEventListener('click', closeCvModal);
+    cvModal.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeCvModal);
+    });
+}
+
+// Mobile Menu Toggle
+const menuBtn = document.getElementById('menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+let menuOpen = false;
+
+function closeMobileMenu() {
+    mobileMenu.classList.add('hidden');
+    menuOpen = false;
+    menuBtn.innerHTML = '<i data-lucide="menu"></i>';
+    lucide.createIcons();
+}
+
+if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        if (menuOpen) {
+            mobileMenu.classList.remove('hidden');
+            menuBtn.innerHTML = '<i data-lucide="x"></i>';
+        } else {
+            mobileMenu.classList.add('hidden');
+            menuBtn.innerHTML = '<i data-lucide="menu"></i>';
+        }
+        lucide.createIcons();
+    });
+}
 
 // Initialize Lucide Icons
 lucide.createIcons();
