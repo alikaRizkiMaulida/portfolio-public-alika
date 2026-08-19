@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alika Rizki Maulida | Portfolio</title>
     <!-- Favicon SVG (Data URI agar tetap Single File) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23020617' stroke='%23312e81' stroke-width='2'/%3E%3Cpath d='M50 20L80 80H20L50 20Z' stroke='url(%23grad)' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='20' r='6' fill='%23a78bfa' /%3E%3Cpath d='M42 65H58' stroke='%23a78bfa' stroke-width='8' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='20' y1='50' x2='80' y2='50' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23a78bfa'/%3E%3Cstop offset='1' stop-color='%23818cf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/svg+xml" href="img/favi.png">
     <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons for icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- font awesome cdn -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- External CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -29,7 +31,6 @@
                 <li><a href="#home" class="nav-link hover:text-purple-400 transition">Home</a></li>
                 <li><a href="#about" class="nav-link hover:text-purple-400 transition">About</a></li>
                 <li><a href="#featured" class="nav-link hover:text-purple-400 transition">Project</a></li>
-                <li><a href="#contact" class="nav-link hover:text-purple-400 transition">Contact</a></li>
             </ul>
 
             <div class="md:hidden">
@@ -63,23 +64,28 @@
                 <img src="img/gue-3.png" alt="Alika Rizki Maulida" class="w-full h-full object-cover rounded-full" loading="lazy">
             </div>
         </div>
-        
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4">
-            <span class="relative flex h-2 w-2">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+    
+        <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4">
+            
+            <div class="relative flex h-3 w-3 items-center justify-center">
+                <span class="animate-ping absolute inline-flex h-6 w-6 rounded-full bg-purple-400 opacity-40"></span>
+                
+                <img src="img/dote.png" alt="Status" class=" animate-bounce-slow absolute max-w-none w-12 h-12 object-contain pointer-events-none drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]">
+            </div>
+
+            <span class="pl-2 text-[10px] md:text-xs font-semibold text-purple-300 tracking-widest uppercase">
+                Available for work
             </span>
-            <span class="text-[10px] md:text-xs font-semibold text-purple-300 tracking-widest uppercase">Open for Collaboration</span>
         </div>
 
-        <h2 class="text-lg md:text-xl text-gray-400 font-light mb-1">Halo, Saya</h2>
+        <h2 class="text-lg md:text-xl text-gray-400 font-light mb-1">Hello, I'm</h2>
         <h1 class="text-[2.5rem] sm:text-5xl md:text-8xl font-black mb-4 tracking-tighter leading-tight">
             Alika Rizki <br class="md:hidden">
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-indigo-500">Maulida</span>
         </h1>
         
         <p class="text-xl md:text-2xl font-medium mb-6 text-gray-300">
-            Seorang <span id="typing" class="text-purple-400 border-r-2 border-purple-400 pr-1"></span>
+            <span id="typing" class="text-purple-400 border-r-2 border-purple-400 pr-1"></span>
         </p>
 
         <div class="flex flex-wrap justify-center gap-3 mb-10 opacity-80">
@@ -90,12 +96,9 @@
 
         <div class="flex flex-col md:flex-row gap-6 justify-center items-center mb-[60px]">
             <div class="flex gap-4">
-                <button id="cv-btn" class="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(147,51,234,0.3)] flex items-center gap-2">
-                    <i data-lucide="file-text" size="18"></i> CV Saya
+                <button id="cv-btn" class="px-4 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(147,51,234,0.3)] flex items-center gap-2">
+                    <i data-lucide="file-text" size="18"></i> My Resume
                 </button>
-                <a href="#contact" class="px-8 py-4 border border-white/10 hover:bg-white/5 text-white rounded-xl font-bold transition-all hover:scale-105">
-                    Hubungi Saya
-                </a>
             </div>
         </div>
     </div>
@@ -119,18 +122,18 @@
                 <i data-lucide="file-text" size="22" class="sm:hidden text-purple-400"></i>
                 <i data-lucide="file-text" size="28" class="hidden sm:inline text-purple-400"></i>
             </div>
-            <h3 class="text-lg sm:text-xl font-bold mb-1">CV Saya</h3>
-            <p class="text-slate-400 text-xs sm:text-sm mb-5 sm:mb-6">Lihat atau download CV Alika Rizki Maulida</p>
+            <h3 class="text-lg sm:text-xl font-bold mb-1">My Resume</h3>
+            <p class="text-slate-400 text-xs sm:text-sm mb-5 sm:mb-6">View or download my resume</p>
             <div class="space-y-2 sm:space-y-3">
-                <a href="AlikaRizkiMaulidaResume.pdf" target="_blank" class="flex items-center justify-center gap-2 sm:gap-3 w-full py-3 sm:py-4 bg-purple-600 hover:bg-purple-700 rounded-xl font-semibold text-sm sm:text-base transition-all hover:scale-[1.02]">
+                <a href="AlikaRizkiMaulidaCV.pdf" target="_blank" class="flex items-center justify-center gap-2 sm:gap-3 w-full py-3 sm:py-4 bg-purple-600 hover:bg-purple-700 rounded-xl font-semibold text-sm sm:text-base transition-all hover:scale-[1.02]">
                     <i data-lucide="eye" size="18" class="sm:hidden"></i>
                     <i data-lucide="eye" size="20" class="hidden sm:inline"></i>
-                    Lihat CV
+                    View Resume
                 </a>
-                <a href="AlikaRizkiMaulidaResume.pdf" download="CV - Alika Rizki Maulida.pdf" class="flex items-center justify-center gap-2 sm:gap-3 w-full py-3 sm:py-4 border border-white/10 hover:bg-white/5 rounded-xl font-semibold text-sm sm:text-base transition-all hover:scale-[1.02]">
+                <a href="AlikaRizkiMaulidaCV.pdf" download="CV - Alika Rizki Maulida.pdf" class="flex items-center justify-center gap-2 sm:gap-3 w-full py-3 sm:py-4 border border-white/10 hover:bg-white/5 rounded-xl font-semibold text-sm sm:text-base transition-all hover:scale-[1.02]">
                     <i data-lucide="download" size="18" class="sm:hidden"></i>
                     <i data-lucide="download" size="20" class="hidden sm:inline"></i>
-                    Download CV
+                    Download Resume
                 </a>
             </div>
         </div>
@@ -156,35 +159,54 @@
             <div class="reveal order-1 lg:order-2">
                 <h3 class="text-3xl font-bold mb-6 flex items-center gap-3">
                     <span class="w-12 h-1 bg-purple-500 rounded-full"></span>
-                    Tentang Saya
+                    About Me
                 </h3>
                 <div class="space-y-4 text-slate-300 leading-relaxed text-sm md:text-lg">
                     <p>
-                        Halo! Saya <span class="text-white font-semibold">Alika Rizki Maulida</span>, mahasiswi <span class="text-purple-300 font-medium">Teknologi Rekayasa Perangkat Lunak</span> yang bergerak di bidang <span class="text-indigo-300 font-medium">Web/Mobile Development</span> dan <span class="text-purple-300 font-medium">Internet of Things (IoT)</span>. Bagi saya, teknologi adalah ruang untuk menciptakan solusi digital yang fungsional dan berdampak nyata.
+                        Hello! I'm <span class="text-white font-semibold">Alika Rizki Maulida</span>, a <span class="text-purple-300 font-medium">Software Engineering</span> student passionate about <span class="text-indigo-300 font-medium">Web/Mobile Development</span> and <span class="text-purple-300 font-medium">Internet of Things (IoT)</span>. To me, technology is a space for creating functional and impactful digital solutions.
                     </p>
                     <p>
-                        Sebagai <span class="text-purple-400 font-semibold">Fullstack Developer</span>, saya berpengalaman membangun aplikasi ujung-ke-ujung menggunakan ekosistem <span class="text-red-300 font-medium">Laravel</span> & <span class="text-sky-300 font-medium">Flutter</span>. Baru-baru ini, saya berhasil menyelesaikan proyek fullstack melalui kolaborasi erat bersama <span class="text-indigo-300 font-medium">UI/UX Designer</span> untuk mentransformasikan desain visual menjadi aplikasi yang responsif dan berorientasi pada pengguna.
+                        As a <span class="text-purple-400 font-semibold">Fullstack Developer</span>, I have experience building end-to-end applications using the <span class="text-red-300 font-medium">Laravel</span> and <span class="text-sky-300 font-medium">Flutter</span> ecosystems. Recently, I successfully completed a fullstack project through close collaboration with a <span class="text-indigo-300 font-medium">UI/UX Designer</span> to transform visual designs into responsive, user-focused applications.
                     </p>
                     <p>
-                        Selain ngoding, saya juga memiliki ketertarikan di dunia <span class="text-emerald-300 font-medium">IoT (Embedded Systems)</span> dan aktif mengeksplorasi pemanfaatan <span class="text-amber-300 font-medium">AI tools</span> untuk meningkatkan efisiensi alur kerja development. Saya adalah <span class="text-white font-medium">pembelajar adaptif</span> yang percaya bahwa kolaborasi lintas disiplin adalah kunci utama melahirkan inovasi terbaik.
+                        Apart from coding, I also have a keen interest in the world of <span class="text-emerald-300 font-medium">IoT (Embedded Systems)</span> and actively explore the use of <span class="text-amber-300 font-medium">AI tools</span> to enhance development workflow efficiency. I am an <span class="text-white font-medium">adaptive learner</span> who believes that cross-disciplinary collaboration is the ultimate key to driving best-in-class innovation.
                     </p>
                 </div>
 
                 <!-- Status Row -->
-                <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-white/10 pt-6">
+                <div class="mt-8 border-t border-white/10 pt-6">
+                    <h6 class="text-lg font-bold mb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-hashtag text-purple-400"></i>Contact Information
+                        <span class="w-10 h-1 bg-purple-500 rounded-full hidden sm:inline"></span>
+                        
+                    </h6>
+                <div class="flex md:grid md:grid-cols-4 gap-6 overflow-x-auto scrollbar-hide pb-2">
                     <div class="flex items-center gap-2">
-                        <i data-lucide="map-pin" size="18" class="text-purple-400"></i>
-                        <span class="text-sm text-slate-400">Bogor, Indonesia</span>
+                        <a href="mailto:alikarizkimaulida14@gmail.com" class="text-sm text-slate-400 hover:text-purple-400 transition">
+                            <i class="fa-regular fa-envelope text-purple-400 text-2xl"></i>
+                            <span class="hidden sm:inline text-sm">Email</span> 
+                        </a>
                     </div>
                     <div class="flex items-center gap-2">
-                        <i data-lucide="zap" size="18" class="text-purple-400"></i>
-                        <span class="text-sm text-slate-400">Development & AI</span>
+                        <a href="https://www.linkedin.com/in/alika-rizki-maulida-a81259373/" target="_blank" rel="noopener noreferrer" class="text-sm text-slate-400 hover:text-purple-400 transition">
+                            <i class="fa-brands fa-linkedin-in text-purple-400 text-2xl"></i>
+                            <span class="hidden sm:inline text-sm">LinkedIn</span>
+                        </a>
                     </div>
                     <div class="flex items-center gap-2">
-                        <i data-lucide="briefcase" size="18" class="text-purple-400"></i>
-                        <span class="text-sm text-slate-400">Collaboration Ready</span>
+                        <a href="https://github.com/alikaRizkiMaulida" target="_blank" rel="noopener noreferrer" class="text-sm text-slate-400 hover:text-purple-400 transition">
+                            <i class="fa-brands fa-github text-purple-400 text-2xl"></i>
+                            <span class="hidden sm:inline text-sm">GitHub</span>
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <a href="https://www.instagram.com/alika_arm147/" target="_blank" rel="noopener noreferrer" class="text-sm text-slate-400 hover:text-purple-400 transition">
+                            <i class="fa-brands fa-instagram text-purple-400 text-2xl"></i>
+                            <span class="hidden sm:inline text-sm">Instagram</span>
+                        </a>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </section>
@@ -193,7 +215,7 @@
     <!-- EDUCATION & EXPERIENCE SECTION START -->
     <section id="journey" class="py-16 md:py-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
         <div class="reveal text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Pendidikan & Pengalaman</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Education & Experience</h2>
             <div class="w-24 h-1 bg-purple-500 mx-auto"></div>
         </div>
 
@@ -205,18 +227,20 @@
                     <div class="p-3 bg-purple-500/20 rounded-xl text-purple-400">
                         <i data-lucide="graduation-cap"></i>
                     </div>
-                    <h3 class="text-2xl font-bold">Pendidikan</h3>
+                    <h3 class="text-2xl font-bold">Education</h3>
                 </div>
 
                 <div class="space-y-6 md:space-y-8 border-l-2 border-purple-500/20 ml-4 md:ml-6 pl-4 md:pl-8 relative">
                     <!-- Kuliah -->
                     <div class="relative">
                         <div class="absolute -left-[25px] md:-left-[41px] top-1 w-3 h-3 md:w-4 h-4 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7]"></div>
-                        <span class="text-[10px] md:text-xs font-bold text-purple-400 uppercase tracking-wider">2025 — Sekarang</span>
+                        <span class="text-[10px] md:text-xs font-bold text-purple-400 uppercase tracking-wider">2025 — Now</span>
                         <h4 class="text-xl font-bold text-white mt-1">Politeknik IDN Bogor</h4>
-                        <p class="text-indigo-300 font-medium">D4 Teknik Rekayasa Perangkat Lunak</p>
+                        <p class="text-indigo-300 font-medium">Diploma in Software Engineer (Programmer)</p>
                         <p class="text-slate-400 text-sm mt-2 leading-relaxed">
-                            Fokus pada pengembangan sistem berbasis IoT, Web Development tingkat lanjut, dan integrasi Artificial Intelligence dalam rekayasa perangkat lunak.
+                            Actively involved in developing end-of-semester projects using frameworks like Laravel, Flutter, and Bootstrap,
+                            with a strong focus on team collaboration and documentation management via Git/GitHub to ensure clean, effective 
+                            project delivery.
                         </p>
                     </div>
 
@@ -225,9 +249,11 @@
                         <div class="absolute -left-[25px] md:-left-[41px] top-1 w-3 h-3 md:w-4 h-4 rounded-full bg-slate-700 border-2 border-purple-500"></div>
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">2022 — 2025</span>
                         <h4 class="text-xl font-bold text-white mt-1">SMK Fatahillah Cileungsi</h4>
-                        <p class="text-indigo-300 font-medium">Rekayasa Perangkat Lunak (RPL)</p>
+                        <p class="text-indigo-300 font-medium">Senior High School, Software Engineer</p>
                         <p class="text-slate-400 text-sm mt-2 leading-relaxed">
-                            Mempelajari dasar-dasar pemrograman web, algoritma, basis data, dan memulai eksplorasi awal di dunia mikrokontroler.
+                            Demonstrated strong problem-solving skills by leading website and mobile application projects—a initiative
+                            directly appointed by the Head of the Software Engineering Study Program that positively impacted over 3+ students, 
+                            all while maintaining structured team collaboration and documentation using Git/GitHub.
                         </p>
                     </div>
                 </div>
@@ -239,29 +265,41 @@
                     <div class="p-3 bg-indigo-500/20 rounded-xl text-indigo-400">
                         <i data-lucide="briefcase"></i>
                     </div>
-                    <h3 class="text-2xl font-bold">Pengalaman Kerja</h3>
+                    <h3 class="text-2xl font-bold">Experience</h3>
                 </div>
 
                 <div class="space-y-6 md:space-y-8 border-l-2 border-indigo-500/20 ml-4 md:ml-6 pl-4 md:pl-8 relative">
                     <!-- Magang (PKL) -->
                     <div class="relative">
                         <div class="absolute -left-[25px] md:-left-[41px] top-1 w-3 h-3 md:w-4 h-4 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]"></div>
-                        <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider">Januari 2024 — April 2024</span>
+                        <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider">July 2026 — Now</span>
+                        <h4 class="text-xl font-bold text-white mt-1">Full-Stack Web Developer (Internship)</h4>
+                        <p class="text-indigo-300 font-medium">Yayasan Adrikma Calistung</p>
+                        <ul class="text-slate-400 text-sm mt-3 space-y-2 list-disc list-inside leading-relaxed">
+                            <li>Designed and built a web-based foundation profile using Laravel and MySQL.</li>
+                            <li>Implemented data management features to facilitate administration of calistung activities and Quranic study sessions.</li>
+                            <li>Deployed the application to a live server for public and parental access.</li>
+                        </ul>
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute -left-[25px] md:-left-[41px] top-1 w-3 h-3 md:w-4 h-4 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]"></div>
+                        <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider">January 2024 — April 2024</span>
                         <h4 class="text-xl font-bold text-white mt-1">Programmer (Internship/PKL)</h4>
                         <p class="text-indigo-300 font-medium">PT. Mahardika Caraka Indonesia</p>
                         <ul class="text-slate-400 text-sm mt-3 space-y-2 list-disc list-inside leading-relaxed">
-                            <li>Terlibat dalam pengembangan dan maintenance aplikasi berbasis web.</li>
-                            <li>Berkolaborasi dengan tim untuk memecahkan masalah teknis (debugging).</li>
-                            <li>Menerapkan prinsip clean code dan alur pengembangan perangkat lunak yang sistematis.</li>
+                            <li>Collaborated with a team of 3+ developers to maintain and successfully implement 4+ new core features on the company's web based applications.</li>
+                            <li>Conducted debugging and code optimization using PHP, resolving 15+ technical bugs to improve web application performance and stability.</li>
+                            <li>Utilized Git/GitHub for version control, streamlining code management and enhancing team collaboration among 3+ developers, resulting in 25% reduction in integration errors or 3 hours saved per project.</li>
                         </ul>
                     </div>
 
                     <!-- Side Note (Opsional) -->
-                    <div class="glass p-5 rounded-2xl border border-white/5 mt-4">
+                    <!-- <div class="glass p-5 rounded-2xl border border-white/5 mt-4">
                         <p class="text-slate-400 text-sm italic">
                             "Berfokus pada pengembangan solusi digital yang efisien dan terus belajar mengadopsi teknologi terbaru untuk menjawab tantangan industri."
                         </p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -273,9 +311,9 @@
     <section id="featured" class="py-20 bg-slate-900/50 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
             <div class="reveal text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Proyek Unggulan</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Featured Projects</h2>
                 <div class="w-24 h-1 bg-purple-500 mx-auto mb-4"></div>
-                <p class="text-slate-400">Eksplorasi teknologi dari hardware hingga software untuk solusi nyata.</p>
+                <p class="text-slate-400">Exploring technology from hardware to software for real-world solutions.</p>
             </div>
 
             <!-- Grid Container: Horizontal scroll di HP, grid di desktop -->
@@ -292,7 +330,7 @@
                     <div class="p-5 md:p-8 flex flex-col flex-grow">
                         <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3 text-purple-300">Underwater Drone: Water Quality Monitor</h3>
                         <p class="text-slate-400 text-xs md:text-sm mb-4 md:mb-6 flex-grow leading-relaxed">
-                            Alat monitoring sungai/danau real-time menggunakan ESP32 dan 3 sensor (Turbidity, TDS, Suhu). Membantu memantau pencemaran air via dashboard digital.
+                            Real-time river/lake monitoring tool using ESP32 and 3 sensors (Turbidity, TDS, Temperature). Helps monitor water pollution via a digital dashboard.
                         </p>
                         <div class="space-y-1 md:space-y-2 mb-4 md:mb-6">
                             <div class="flex items-center gap-2 text-xs text-slate-300">
@@ -303,7 +341,7 @@
                             </div>
                         </div>
                         <a href="https://youtu.be/KkfxIWejOsM?si=YuEsWeJZ0kj7Zrz4" target="_blank" class="inline-flex items-center gap-2 text-purple-400 text-sm font-semibold hover:gap-4 transition-all">
-                            Lihat Dokumentasi <i data-lucide="arrow-right" size="16"></i>
+                            View Documentation <i data-lucide="arrow-right" size="16"></i>
                         </a>
                     </div>
                 </div>
@@ -317,9 +355,9 @@
                         </div>
                     </div>
                     <div class="p-5 md:p-8 flex flex-col flex-grow">
-                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3 text-purple-300">Landing Page Penjualan Jasa</h3>
+                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3 text-purple-300">Landing Page for Service Sales</h3>
                         <p class="text-slate-400 text-xs md:text-sm mb-4 md:mb-6 flex-grow leading-relaxed">
-                            Platform untuk branding digital dan komersialisasi skill. Menyelesaikan masalah branding agar developer tidak hanya bisa coding, tapi juga mampu menjual jasa secara profesional.
+                            Platform for digital branding and skill commercialization. Solves branding issues so developers can not only code but also professionally sell their services.
                         </p>
                         <div class="space-y-1 md:space-y-2 mb-4 md:mb-6">
                             <div class="flex items-center gap-2 text-xs text-slate-300">
@@ -330,7 +368,7 @@
                             </div>
                         </div>
                         <a href="https://jasa-alika-iot.alikarizkimaulida.my.id/" target="_blank" class="inline-flex items-center gap-2 text-purple-400 text-sm font-semibold hover:gap-4 transition-all">
-                            Lihat Proyek <i data-lucide="arrow-right" size="16"></i>
+                            View Project <i data-lucide="arrow-right" size="16"></i>
                         </a>
                     </div>
                 </div>
@@ -344,9 +382,9 @@
                         </div>
                     </div>
                     <div class="p-5 md:p-8 flex flex-col flex-grow">
-                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3 text-purple-300">LinguaGo: Belajar Bahasa & Korea</h3>
+                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3 text-purple-300">LinguaGo: Learn Language & Korean</h3>
                         <p class="text-slate-400 text-xs md:text-sm mb-4 md:mb-6 flex-grow leading-relaxed">
-                            Aplikasi belajar bahasa interaktif (English & Korea) dengan fitur gamifikasi. Mobile dikembangkan dengan Flutter dan backend menggunakan Laravel. Tersedia APK download langsung dari landing page.
+                            Interactive language learning app (English & Korean) with gamification features. Mobile developed with Flutter and backend using Laravel. APK download available directly from the landing page.
                         </p>
                         <div class="space-y-1 md:space-y-2 mb-4 md:mb-6">
                             <div class="flex items-center gap-2 text-xs text-slate-300">
@@ -356,11 +394,11 @@
                                 <i data-lucide="server" size="14" class="text-purple-400"></i> Laravel (Backend)
                             </div>
                             <div class="flex items-center gap-2 text-xs text-slate-300">
-                                <i data-lucide="download" size="14" class="text-purple-400"></i> Download APK Tersedia
+                                <i data-lucide="download" size="14" class="text-purple-400"></i> Download APK Available
                             </div>
                         </div>
                         <a href="https://linguago.my.id" target="_blank" class="inline-flex items-center gap-2 text-purple-400 text-sm font-semibold hover:gap-4 transition-all">
-                            Kunjungi <i data-lucide="arrow-right" size="16"></i>
+                            Visit <i data-lucide="arrow-right" size="16"></i>
                         </a>
                     </div>
                 </div>
@@ -373,7 +411,7 @@
     <!-- PORTFOLIO GALLERY START -->
     <section class="py-16 md:py-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
         <div class="reveal text-center mb-12">
-            <h2 class="text-3xl font-bold mb-2">Portfolio Lainnya</h2>
+            <h2 class="text-3xl font-bold mb-2">Other Portfolio</h2>
             <div class="w-20 h-1 bg-purple-500 mx-auto mb-6"></div>
             <div class="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 overflow-x-auto scrollbar-hide pb-2 md:pb-0" id="filter-tabs">
                 <button class="filter-btn active whitespace-nowrap px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all" data-filter="all">All</button>
@@ -386,6 +424,7 @@
 
         <div id="portfolio-grid" class="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide md:overflow-visible pb-4">
         </div>
+        <div id="paginationNav" class="flex justify-center items-center gap-2 mt-8"></div>
     </section>
     <!-- PORTFOLIO GALLERY END -->
 
@@ -439,58 +478,29 @@
     </section>
     <!-- TECH STACK SECTION END -->
 
-    <!-- CONTACT SECTION START -->
-    <section id="contact" class="py-20 bg-slate-950 relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
-            <div class="reveal text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Mari Berkolaborasi</h2>
-                <p class="text-slate-400">Punya ide menarik? Mari kita wujudkan bersama.</p>
-            </div>
-
-            <div class="reveal glass p-5 md:p-8 rounded-3xl border border-white/10">
-                <form action="#" class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium mb-2 text-slate-300">Nama Lengkap</label>
-                            <input type="text" class="w-full bg-slate-800 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 transition" placeholder="Alika Rizki">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2 text-slate-300">Email</label>
-                            <input type="email" class="w-full bg-slate-800 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 transition" placeholder="alika@email.com">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2 text-slate-300">Pesan</label>
-                        <textarea rows="4" class="w-full bg-slate-800 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 transition" placeholder="Tuliskan pesan Anda di sini..."></textarea>
-                    </div>
-                    <button class="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl font-bold hover:shadow-lg hover:shadow-purple-500/30 transition-all hover:scale-[1.01]">
-                        Kirim Pesan Sekarang
-                    </button>
-                </form>
-
-                <div class="mt-12 pt-8 border-t border-white/10 flex flex-wrap justify-center gap-4 md:gap-8">
-                    <a href="https://www.linkedin.com/in/alika-rizki-maulida-998096369/" target="_blank" class="flex items-center gap-2 text-slate-400 hover:text-purple-400 transition">
-                        <i data-lucide="linkedin" size="20"></i> LinkedIn
-                    </a>
-                    <a href="https://github.com/alikaRizkiMaulida" target="_blank" class="flex items-center gap-2 text-slate-400 hover:text-purple-400 transition">
-                        <i data-lucide="github" size="20"></i> GitHub
-                    </a>
-                    <a href="https://www.instagram.com/alika_arm147/" target="_blank" class="flex items-center gap-2 text-slate-400 hover:text-purple-400 transition">
-                        <i data-lucide="instagram" size="20"></i> Instagram
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- CONTACT SECTION END -->
-
     <!-- FOOTER START -->
     <footer class="py-10 border-t border-white/5 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Alika Rizki Maulida. Made with ❤️ & Tech.</p>
+        <div class="flex flex-col active items-center gap-2">
+            <p>&copy; 2026 Alika Rizki Maulida. All rights reserved.</p>
+            <span id="realtimeClock" class="text-xs sm:text-sm font-mono font-bold text-purple-400">Loading...</span>
+            <span id="realtimeDate" class="text-[11px] font-medium text-slate-400">Loading...</span>
+        </div>
     </footer>
     <!-- FOOTER END -->
 
+    <!-- Floating WhatsApp Button -->
+        <a id="waButton" 
+        href="https://wa.me/6285717296475?text=Halo,%20saya%20tertarik%20untuk%20berdiskusi%20mengenai%20projek!" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white p-3.5 rounded-full shadow-lg shadow-green-500/30 transition-all duration-300 opacity-0 pointer-events-none translate-y-10">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            <span class="hidden sm:inline text-sm font-medium pr-1">Chat WhatsApp</span>
+        </a> 
+
     <!-- SCRIPTS -->
     <script src="js/script.js"></script>
+
+
 </body>
 </html>

@@ -1,19 +1,54 @@
 // Portfolio Gallery
+const paginationNav = document.getElementById('paginationNav');
 const portfolioGrid = document.getElementById('portfolio-grid');
 const projectData = [
-    { cat: "mobile", img: "img/app-1.png", title: "My Reminder App (Ui Flutter)", desc: "Pengembangan antarmuka (UI) aplikasi Reminder yang modern dan responsif menggunakan Flutter, dengan implementasi GetX sebagai State Management untuk alur data yang efisien.", label: "UI Design" },
-    { cat: "web", img: "img/web-1.png", title: "OfficeLink Website", desc: "Perancangan Landing Page profesional untuk platform presensi karyawan 'OfficeLink', fokus pada user experience (UX) untuk memudahkan manajemen kehadiran karyawan perusahaan.", label: "User Experience" },
-    { cat: "iot", img: "img/image-1.jpg", title: "LED IOT Arduino", desc: "Eksperimen sistem kendali lampu jarak jauh berbasis IoT menggunakan mikrokontroler Arduino, mencakup perancangan rangkaian listrik dan logika pemrograman LED.", label: "Mikrocontroller Arduino" },
-    { cat: "uiux", img: "img/web-3.png", title: "Portfolio design", desc: "Proses desain visual dan penyusunan struktur portofolio UI/UX yang mencerminkan identitas profesional, menggunakan prinsip desain modern untuk portofolio digital.", label: "Portfolio Digital" },
-    { cat: "iot", img: "img/image-2.jpg", title: "Tempat Sampah Otomatis Arduino", desc: "Inovasi Smart Trash Bin berbasis Arduino Uno yang dilengkapi sensor ultrasonik untuk mendeteksi objek, memungkinkan sistem buka-tutup tutup sampah secara otomatis dan higienis.", label: "Sensor Ultrasonik" },
-    { cat: "mobile", img: "img/app-3.png", title: "HafalanQ App", desc: "Aplikasi HafalanQ: Platform manajemen setoran hafalan Quran yang mengintegrasikan Flutter di sisi mobile dan Laravel sebagai backend API untuk sinkronisasi data secara real-time.", label: "Integrasi" },
+    { cat: "mobile", img: "img/app-1.png", title: "My Reminder App (Ui Flutter)", desc: "Development of a modern and responsive Reminder application interface (UI) using Flutter, with GetX implementation as State Management for efficient data flow.", label: "UI Design" },
+    { cat: "web", img: "img/web-1.png", title: "OfficeLink Website", desc: "Development of a professional Landing Page for the 'OfficeLink' employee attendance platform, focusing on user experience (UX) to facilitate company employee attendance management.", label: "User Experience" },
+    { cat: "iot", img: "img/image-1.jpg", title: "LED IOT Arduino", desc: "Experimentation with a remote-controlled light system based on IoT using an Arduino microcontroller, including electrical circuit design and LED programming logic.", label: "Mikrocontroller Arduino" },
+    { cat: "uiux", img: "img/web-3.png", title: "Portfolio design", desc: "Visual design process and structuring of a UI/UX portfolio that reflects a professional identity, utilizing modern design principles for a digital portfolio.", label: "Portfolio Digital" },
+    { cat: "iot", img: "img/image-2.jpg", title: "Arduino Auto Trash", desc: "Innovation of a Smart Trash Bin based on Arduino Uno equipped with ultrasonic sensors to detect objects, enabling an automatic open-close mechanism for hygienic waste disposal.", label: "Sensor Ultrasonik" },
+    { cat: "mobile", img: "img/app-3.png", title: "HafalanQ App", desc: "HafalanQ App: A Quran memorization management platform that integrates Flutter on the mobile side and Laravel as backend API for real-time data synchronization.", label: "Integrasi" },
     { cat: "web", img: "img/features-1.png", title: "AI-Powered Tahfidz Monitoring", desc: "Sistem pemantau hafalan santri yang dikembangkan dengan bantuan AI Tools. Proyek ini adalah bentuk problem solving untuk efisiensi tracking hafalan sekaligus eksplorasi workflow AI.", label: "AI Implementation" },
 ];
 
-function renderProjects(filter = "all") {
-    const filtered = filter === "all" ? projectData : projectData.filter(p => p.cat === filter);
+let currentPage = 1;
+const projectPerPage = 3;
+let currentFilter = "all";
+
+function applyRevealEffect() {
+    try {
+        if (typeof observer !== 'undefined') {
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+    } catch (e) {
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = "1";
+            el.style.transform = "none";
+        });
+    }
+}
+
+function renderProjects() {
+    if (typeof projectData === 'undefined' || !Array.isArray(projectData)) {
+        console.error("Variabel 'projectData' belum ada atau bukan Array!");
+        portfolioGrid.innerHTML = `<p class="text-slate-400 text-center col-span-full py-8">Data projek tidak ditemukan.</p>`;
+        return;
+    }
+    const filtered = currentFilter === "all"
+        ? projectData
+        : projectData.filter(p => p.cat === currentFilter);
+
+    if (filtered.length === 0) {
+        portfolioGrid.innerHTML = `<p class="text-slate-400 text-center col-span-full py-8">Tidak ada projek di kategori ini.</p>`;
+        if (paginationNav) paginationNav.innerHTML = '';
+        return;
+    }
+    const startIndex = (currentPage - 1) * projectPerPage;
+    const endIndex = startIndex + projectPerPage;
+    const paginatedProjects = filtered.slice(startIndex, endIndex);
+
     let html = '';
-    filtered.forEach(p => {
+    paginatedProjects.forEach(p => {
         html += `
         <div class="snap-start shrink-0 w-[80vw] sm:w-[75vw] md:w-auto reveal group relative overflow-hidden rounded-xl bg-slate-900 border border-white/5 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-2 shadow-lg">
             <div class="aspect-video bg-slate-800">
@@ -30,16 +65,47 @@ function renderProjects(filter = "all") {
         `;
     });
     portfolioGrid.innerHTML = html;
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    applyRevealEffect();
+    renderPagination(filtered.length);
 }
 
+function renderPagination(totalItems) {
+    if (!paginationNav) return;
+    const totalPages = Math.ceil(totalItems / projectPerPage);
+    paginationNav.innerHTML = '';
+
+    if (totalPages <= 1) return;
+
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.innerText = i;
+
+        const baseStyle = "px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-all duration-200 border cursor-pointer";
+        const activeStyle = "bg-purple-600 text-white border-purple-500 shadow-lg shadow-purple-500/30 font-bold";
+        const inactiveStyle = "bg-slate-900 text-slate-400 border-white/10 hover:border-purple-500/50 hover:text-white";
+
+        btn.className = `${baseStyle} ${i === currentPage ? activeStyle : inactiveStyle}`;
+
+        btn.addEventListener('click', () => {
+            currentPage = i;
+            renderProjects();
+
+            portfolioGrid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+        paginationNav.appendChild(btn);
+    }
+}
 document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        renderProjects(btn.dataset.filter);
+        currentFilter = btn.dataset.filter;
+        currentPage = 1; // Reset to first page on filter change
+        renderProjects();
     });
 });
+
+renderProjects();
 
 // CV Modal
 const cvBtn = document.getElementById('cv-btn');
@@ -166,3 +232,54 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+
+// Floating WhatsApp Button Visibility
+window.addEventListener('scroll', () => {
+    const waBtn = document.getElementById('waButton');
+    const aboutSection = document.getElementById('about');
+
+    if (aboutSection && waBtn) {
+        const aboutPosition = aboutSection.getBoundingClientRect().top;
+
+        if (aboutPosition <= window.innerHeight / 2) {
+            // Tampil tombol WA
+            waBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-10');
+            waBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+        } else {
+            // Sembunyikan tombol WA jika kembali ke Hero Section
+            waBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-10');
+            waBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+        }
+    }
+});
+
+// Real-time Clock
+function updateClock() {
+    const now = new Date();
+
+    const optionsDate = {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    };
+    const dateString = now.toLocaleDateString('en-EN', optionsDate);
+
+    // Format Jam:Menit:Detik (contoh: 14.10.04)
+    const timeString = now.toLocaleTimeString('id-ID', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
+    const clockEl = document.getElementById('realtimeClock');
+    const dateEl = document.getElementById('realtimeDate');
+    if (clockEl) clockEl.textContent = `${dateString}`;
+    if (dateEl) dateEl.textContent = `${timeString}`;
+
+}
+
+updateClock();
+
+setInterval(updateClock, 1000);
